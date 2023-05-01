@@ -16,9 +16,11 @@ def main():
     top_k_words = heapq.nlargest(k, word_counts.items(), key=lambda x: x[1])
 
     # output the top k frequent words to stdout
+    print("\nTop frequent words:")
+    print("Word".ljust(21) + "Count")
+    print("--------------------------")
     for word, count in top_k_words:
-        print(f"{word}\t{count}")
-
+        print("{:<20} {}".format(word, count))
 
 if __name__ == '__main__':
     main()
