@@ -36,4 +36,4 @@ def mapper():
 
 
 if __name__ == '__main__':
-    main()
+    mapper()
