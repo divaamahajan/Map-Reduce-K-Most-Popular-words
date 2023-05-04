@@ -1,26 +1,23 @@
 import heapq
 import sys
 
-def main():
-    # set the number of top words to find
-    # k = int(input("Enter the number of top words to find: "))
-    k = 10
 
-    # read the intermediate key-value pairs from stdin
-    word_counts = {}
+import sys
+from collections import defaultdict
+
+def reducer():
+    # input comes from STDIN (standard input)
+    word_counts = defaultdict(int)
     for line in sys.stdin:
-        word, count = line.strip().split('\t')
-        word_counts[word] = word_counts.get(word, 0) + int(count)
-
-    # get the top k frequent words
-    top_k_words = heapq.nlargest(k, word_counts.items(), key=lambda x: x[1])
-
-    # output the top k frequent words to stdout
-    print("\nTop frequent words:")
-    print("Word".ljust(21) + "Count")
-    print("--------------------------")
-    for word, count in top_k_words:
-        print("{:<20} {}".format(word, count))
+        # remove leading and trailing whitespace
+        line = line.strip()
+        # split the line into word and count
+        word, count = line.split("\t")
+        # convert count (currently a string) to int
+        count = int(count)
+        # add the count to the running total for the word
+        word_counts[word] += count
+    # emit the final word counts as key-value pairs
 
 if __name__ == '__main__':
-    main()
+    reducer()
