@@ -151,4 +151,7 @@ Save and exit the file by pressing `CTRL+X`, then `Y`, then `Enter`.
 `export PDSH_RCMD_TYPE=ssh`
 
 ### 10. Start all the daemons:
-`sudo hadoop-3.3.5/sbin/start-all`
+Run one of the below commands
+* `sudo hadoop-3.3.5/sbin/start-all`
+* `hadoop-3.3.5/sbin/start-all.sh`
+* `chmod +x hadoop-3.3.5/sbin/start-all.sh`
