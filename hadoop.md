@@ -155,3 +155,9 @@ Run one of the below commands
 * `sudo hadoop-3.3.5/sbin/start-all`
 * `hadoop-3.3.5/sbin/start-all.sh`
 * `chmod +x hadoop-3.3.5/sbin/start-all.sh`
+
+#### Issue is with the permissions on the logs directory
+Hadoop is unable to write to the directory, so it's failing to start. You can try to fix the permissions by running the following command:
+> `sudo chown -R <username>:<username> hadoop-3.3.5/logs`
+This will change the ownership of the logs directory to the user <username>. Then, try starting Hadoop again with the command:
+> `hadoop-3.3.5/sbin/start-all.sh`
