@@ -3,7 +3,7 @@ import sys
 import heapq
 
 def reducer_topk():
-    k = 10
+    k = 100
     # input comes from STDIN (standard input)
     topk_heap = []
     for line in sys.stdin:
