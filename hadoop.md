@@ -184,7 +184,7 @@ This will change the ownership of the logs directory to the user <username>. The
 -mapper "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/mapper_stopwords.py" \
 -reducer "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/reducer.py" \
 -input /user/divyamahajan/MapReduce/input/data_16GB.txt \
--output /user/divyamahajan/MapReduce/output/exp1_1
+-output /user/divyamahajan/MapReduce/output/exp0
   ```
 ## Note
 * If working on python, make sure to add below header
@@ -194,3 +194,4 @@ This will change the ownership of the logs directory to the user <username>. The
 > * `dos2unix mapper.py`
 > * `dos2unix reducer.py`
 > * `dos2unix topk.py`
+* if trying too run same command, remove output file dir: `hadoop fs -rm -r /user/divyamahajan/MapReduce/output/exp0`
