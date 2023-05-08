@@ -180,9 +180,9 @@ This will change the ownership of the logs directory to the user <username>. The
 ## Execute
   ```yaml
   hadoop-3.3.5/bin/hadoop jar hadoop-3.3.5/share/hadoop/tools/lib/hadoop-*streaming*.jar \
--files "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/mapper_stopwords.py","/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/reducer.py","/<local_directory>/Map-Reduce-K-Most-Popular-words/stop_words.txt" \
--mapper "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/mapper_stopwords.py" \
--reducer "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/reducer.py" \
+-files "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp0_topk/mapper_stopwords.py","/<local_directory>/Map-Reduce-K-Most-Popular-words/exp0_topk/reducer.py","/<local_directory>/Map-Reduce-K-Most-Popular-words/stop_words.txt" \
+-mapper "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp0_topk/mapper_stopwords.py" \
+-reducer "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp0_topk/reducer.py" \
 -input /user/divyamahajan/MapReduce/input/data_16GB.txt \
 -output /user/divyamahajan/MapReduce/output/exp0
   ```
