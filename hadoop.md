@@ -182,3 +182,7 @@ This will change the ownership of the logs directory to the user <username>. The
 * If working on python, make sure to add below header
   `#!/usr/bin/env python3`
 * If working on Ubuntu app via Windows
+> `sudo apt-get install dos2unix`
+> `dos2unix mapper.py`
+> `dos2unix reducer.py`
+> `dos2unix topk.py`
