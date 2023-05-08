@@ -125,6 +125,21 @@ Add the following configuration between the `<configuration>` tags:
 </property>
 
   ```
+  Note: if error : `Unable to find 'resource-types.xml'`. change the properties to below:
+```yaml
+<property>
+<name>yarn.app.mapreduce.am.env</name>
+<value>HADOOP_MAPRED_HOME=/opt/hadoop</value>
+</property>
+<property>
+<name>mapreduce.map.env</name>
+<value>HADOOP_MAPRED_HOME=/opt/hadoop</value>
+</property>
+<property>
+<name>mapreduce.reduce.env</name>
+<value>HADOOP_MAPRED_HOME=/opt/hadoop</value>
+</property>
+```
 Save and exit the file by pressing `CTRL+X`, then `Y`, then `Enter`.
 
 ### 7. Add configuration to yarn-site.xml:
