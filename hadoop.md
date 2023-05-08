@@ -177,7 +177,15 @@ Hadoop is unable to write to the directory, so it's failing to start. You can tr
 This will change the ownership of the logs directory to the user <username>. Then, try starting Hadoop again with the command:
 > `hadoop-3.3.5/sbin/start-all.sh`
   
-
+## Execute
+  ```yaml
+  hadoop-3.3.5/bin/hadoop jar hadoop-3.3.5/share/hadoop/tools/lib/hadoop-*streaming*.jar \
+-files "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/mapper_stopwords.py","/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/reducer.py","/<local_directory>/Map-Reduce-K-Most-Popular-words/stop_words.txt" \
+-mapper "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/mapper_stopwords.py" \
+-reducer "/<local_directory>/Map-Reduce-K-Most-Popular-words/exp1_stopwords/reducer.py" \
+-input /user/divyamahajan/MapReduce/input/data_16GB.txt \
+-output /user/divyamahajan/MapReduce/output/exp1_1
+  ```
 ## Note
 * If working on python, make sure to add below header
   `#!/usr/bin/env python3`
