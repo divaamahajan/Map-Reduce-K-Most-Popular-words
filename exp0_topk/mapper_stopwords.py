@@ -1,7 +1,14 @@
+#!/usr/bin/env python3
 import re
 from collections import defaultdict
 import sys
-STOP_WORDS = 'stop_words.txt'
+import os
+
+# get the absolute path of the directory 
+dir_path = os.path.dirname(os.path.dirname(__file__))
+# append the relative path of stop_words.txt to the directory path
+STOP_WORDS = os.path.join(dir_path, 'stop_words.txt')
+
 # Define function to read stop words from a file
 def read_stop_words(file_path):
     with open(file_path, "r", encoding="utf-8-sig") as f:
