@@ -123,7 +123,14 @@ Add the following configuration between the `<configuration>` tags:
     <name>mapreduce.application.classpath</name>
     <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
 </property>
-
+<property>
+    <name>mapreduce.jobhistory.done-dir</name>
+    <value>/mapred/history/done</value>
+</property>
+<property>
+    <name>mapreduce.jobhistory.intermediate-done-dir</name>
+    <value>/mapred/history/tmp</value>
+</property>
   ```
   Note: if error : `Unable to find 'resource-types.xml'`. change the properties to below:
 ```yaml
@@ -154,6 +161,10 @@ Add the following configuration between the `<configuration>` tags:
 <property>
     <name>yarn.nodemanager.env-whitelist</name>
     <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
+</property>
+<property>
+  <name>yarn.server.timeline-service.leveldb-timeline-store.ttl-interval-ms</name>
+  <value>60000</value> <!-- set the value to the desired interval in milliseconds -->
 </property>
 
   ```
@@ -195,3 +206,13 @@ This will change the ownership of the logs directory to the user <username>. The
 > * `dos2unix reducer.py`
 > * `dos2unix topk.py`
 * if trying too run same command, remove output file dir: `hadoop fs -rm -r /user/divyamahajan/MapReduce/output/exp0`
+* start Job History Server : `mapred --daemon start historyserver`
+* Job History : http://localhost:19888/jobhistory
+* get specific job ID details `hadoop job -history <job-id>`
+* list all applications, filter only those that have succeeded, get the first one (which should be the latest), and print its ID.
+> * `yarn application -list | grep -E "application_[0-9]+_[0-9]+.*SUCCEEDED" | head -1 | awk '{print $1}'`
+> or
+> * `mapred job -list | grep -E "Job [0-9]+:.*SUCCESS" | head -1 | awk '{print $1}'`
+
+* HDFS explorer on browser : http://localhost:9870/
+> Utilities > browse File system
