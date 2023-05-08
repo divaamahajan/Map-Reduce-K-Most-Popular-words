@@ -176,3 +176,9 @@ Hadoop is unable to write to the directory, so it's failing to start. You can tr
 > `sudo chown -R <username>:<username> hadoop-3.3.5/logs`
 This will change the ownership of the logs directory to the user <username>. Then, try starting Hadoop again with the command:
 > `hadoop-3.3.5/sbin/start-all.sh`
+  
+
+## Note
+* If working on python, make sure to add below header
+  `#!/usr/bin/env python3`
+* If working on Ubuntu app via Windows
