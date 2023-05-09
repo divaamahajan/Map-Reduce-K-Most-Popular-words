@@ -37,8 +37,7 @@ def mapper():
     for word, count in word_counts.items():
         print(f"{word}\t{count}")
 
-if __name__ == '__main__':
-    
+if __name__ == '__main__':    
     logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
     start_time = time.time()
     mapper()

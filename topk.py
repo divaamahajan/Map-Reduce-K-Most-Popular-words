@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import sys
 import heapq
+import logging
+import time
 
 k = 100
 
@@ -26,4 +28,8 @@ def topk():
         print(f"{word}\t{count}")
 
 if __name__ == '__main__':
+    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+    start_time = time.time()
     topk()
+    end_time = time.time()
+    logging.info(f"********************* Top_K Total runtime: {end_time - start_time} seconds")
