@@ -4,6 +4,7 @@ import heapq
 import logging
 import time
 
+
 k = 100
 
 def topk():
