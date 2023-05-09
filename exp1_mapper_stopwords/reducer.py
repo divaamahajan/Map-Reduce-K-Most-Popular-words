@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import sys
 from collections import defaultdict
+import logging
+import time
 
 def reducer():
     # create a dictionary to store the word counts
@@ -28,4 +30,8 @@ def reducer():
         print(f"{word}\t{count}")
 
 if __name__ == '__main__':
+    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+    start_time = time.time()
     reducer()
+    end_time = time.time()
+    logging.info(f"********************* Reducer Total runtime: {end_time - start_time} seconds")

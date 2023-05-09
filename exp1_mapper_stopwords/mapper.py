@@ -3,6 +3,9 @@ import re
 from collections import defaultdict
 import sys
 import os
+import logging
+import time
+
 
 # get the absolute path of the directory 
 dir_path = os.path.dirname(os.path.dirname(__file__))
@@ -35,4 +38,9 @@ def mapper():
         print(f"{word}\t{count}")
 
 if __name__ == '__main__':
+    
+    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+    start_time = time.time()
     mapper()
+    end_time = time.time()
+    logging.info(f"********************* Mapper Total runtime: {end_time - start_time} seconds")
