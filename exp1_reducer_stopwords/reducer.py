@@ -1,7 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 from collections import defaultdict
 import sys
 import os
+import psutil
+import logging
+import time
+
 # get the absolute path of the directory 
 dir_path = os.path.dirname(os.path.dirname(__file__))
 # append the relative path of stop_words.txt to the directory path
@@ -14,6 +18,11 @@ def read_stop_words(file_path):
         return set([word.lower() for word in f.read().splitlines()])
     
 def reducer():
+    # Get the file descriptor of sys.stdin
+    fd = sys.stdin.fileno()
+
+    # Get the size of the file descriptor
+    size = os.fstat(fd).st_size
     # read stop words from file
     stop_words = read_stop_words(STOP_WORDS)
     # create a dictionary to store the word counts
@@ -39,9 +48,22 @@ def reducer():
         word_counts[word] += count
 
     # Emit the top k words as key-value pairs
-    for count, word in word_counts:
+    for count, word in word_counts.items():
         print(f"{word}\t{count}")
+    return size
 
+
+def generateLogs(fileSize, start_time, end_time):
+    running_time = end_time - start_time
+    PID = os.getpid()
+    process = psutil.Process(PID)
+    memory_usage = process.memory_info().rss
+    cpu_utilization = psutil.cpu_percent(interval=running_time)
+    logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
 
 if __name__ == '__main__':
-    reducer()
+    logging.basicConfig(filename='reducer.csv',format='%(asctime)s %(message)s',level=logging.INFO)
+    start_time = time.time()
+    fileSize = reducer()
+    end_time = time.time()
+    generateLogs(fileSize, start_time,end_time)

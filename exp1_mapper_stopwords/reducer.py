@@ -44,13 +44,15 @@ def generateLogs(fileSize, start_time, end_time):
     process = psutil.Process(PID)
     memory_usage = process.memory_info().rss
     cpu_utilization = psutil.cpu_percent(interval=running_time)
-    logging.info(f"{PID}, {fileSize /1024 /1024: .2f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
+    logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
     # logging.info(f"********************* Reducer Memory usage: {memory_usage / 1024 / 1024:.2f} MB")
+
     # logging.info(f"********************* Reducer CPU utilization: {cpu_utilization:.2f} %")
 
+
 if __name__ == '__main__':
-    logging.basicConfig(filename='reducer.csv',format='%(asctime)s %(message)s', level=logging.INFO)
-    logging.info('PID, File read size (MB), Runtime(seconds), Memory Usage(MB), CPU utilization (%)')
+    logging.basicConfig(filename='reducer.csv',format='%(asctime)s %(message)s',level=logging.INFO)
+    # logging.info('Timestamp, PID, File read size (MB), Runtime(seconds), Memory Usage(MB), CPU utilization (%)')
     start_time = time.time()
     fileSize = reducer()
     end_time = time.time()
