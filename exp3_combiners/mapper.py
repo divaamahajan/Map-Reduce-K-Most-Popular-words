@@ -1,6 +1,6 @@
+#!/usr/bin/env python
 #!/usr/bin/env python3
 import re
-from collections import defaultdict
 import sys
 import os
 import logging
@@ -27,8 +27,6 @@ def mapper():
 
     # read stop words from file
     stop_words = read_stop_words(STOP_WORDS)
-    # create a dictionary to store the word counts
-    word_counts = defaultdict(int) 
 
     # input comes from STDIN (standard input)
     for line in sys.stdin:
@@ -38,10 +36,7 @@ def mapper():
         for word in words:
             # if the word is not in the stop words set, increment its count in the dictionary
             if word not in stop_words:
-                word_counts[word] += 1
-    # emit the word counts as key-value pairs
-    for word, count in word_counts.items():
-        print(f"{word}\t{count}")
+                print(f"{word}\t{1}")
     
     return size
 
@@ -55,9 +50,9 @@ def generateLogs(fileSize, start_time, end_time):
 
 
 if __name__ == '__main__':    
-    logging.basicConfig(filename='mapper1.csv', format='%(asctime)s %(message)s',level=logging.INFO)
-    # logging.info('Timestamp, PID, File read size(MB), Runtime(seconds), Memory Usage(MB), CPU utilization (%)')
+    logging.basicConfig(filename='mapper3.csv', format='%(asctime)s %(message)s',level=logging.INFO)
     start_time = time.time()
     fileSize = mapper()
     end_time = time.time()
     generateLogs(fileSize,start_time,end_time)
+

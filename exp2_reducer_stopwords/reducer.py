@@ -11,7 +11,6 @@ dir_path = os.path.dirname(os.path.dirname(__file__))
 # append the relative path of stop_words.txt to the directory path
 STOP_WORDS = os.path.join(dir_path, 'stop_words.txt')
 
-print(STOP_WORDS)
 # Define function to read stop words from a file
 def read_stop_words(file_path):
     with open(file_path, "r", encoding="utf-8-sig") as f:
@@ -62,7 +61,7 @@ def generateLogs(fileSize, start_time, end_time):
     logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
 
 if __name__ == '__main__':
-    logging.basicConfig(filename='reducer.csv',format='%(asctime)s %(message)s',level=logging.INFO)
+    logging.basicConfig(filename='reducer2.csv',format='%(asctime)s %(message)s',level=logging.INFO)
     start_time = time.time()
     fileSize = reducer()
     end_time = time.time()

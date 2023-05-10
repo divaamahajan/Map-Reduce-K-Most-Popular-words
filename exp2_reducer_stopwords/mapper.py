@@ -39,7 +39,7 @@ def generateLogs(fileSize, start_time, end_time):
     logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
 
 if __name__ == '__main__':
-    logging.basicConfig(filename='mapper.csv', format='%(asctime)s %(message)s',level=logging.INFO)
+    logging.basicConfig(filename='mapper2.csv', format='%(asctime)s %(message)s',level=logging.INFO)
     start_time = time.time()
     fileSize = mapper()
     end_time = time.time()
