@@ -26,7 +26,7 @@ def topk():
         # parse the key-value pair
         word, count = line.split("\t")
         count = int(count)
-
+        if len(word)< 7: continue
         # add word to the top k list if count is greater than smallest count in list
         if len(top_words) < k:
             heapq.heappush(top_words, (count, word))
@@ -50,8 +50,8 @@ def generateLogs(fileSize, start_time, end_time):
     logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
 
 if __name__ == '__main__':
-    logging.basicConfig(filename='topk.csv',format='%(asctime)s %(message)s',level=logging.INFO)
-    start_time = time.time()
+    # logging.basicConfig(filename='topk.csv',format='%(asctime)s %(message)s',level=logging.INFO)
+    # start_time = time.time()
     fileSize = topk()
-    end_time = time.time()
-    generateLogs(fileSize, start_time,end_time)
+    # end_time = time.time()
+    # generateLogs(fileSize, start_time,end_time)
