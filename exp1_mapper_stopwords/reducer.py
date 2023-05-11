@@ -38,6 +38,7 @@ def reducer():
     
     return size
 
+
 def generateLogs(fileSize, start_time, end_time):
     running_time = end_time - start_time
     PID = os.getpid()
@@ -46,10 +47,8 @@ def generateLogs(fileSize, start_time, end_time):
     cpu_utilization = psutil.cpu_percent(interval=running_time)
     logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
 
-
 if __name__ == '__main__':
     logging.basicConfig(filename='reducer1.csv',format='%(asctime)s %(message)s',level=logging.INFO)
-    # logging.info('Timestamp, PID, File read size (MB), Runtime(seconds), Memory Usage(MB), CPU utilization (%)')
     start_time = time.time()
     fileSize = reducer()
     end_time = time.time()
