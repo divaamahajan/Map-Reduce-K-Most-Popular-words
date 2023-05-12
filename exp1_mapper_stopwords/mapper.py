@@ -46,6 +46,8 @@ def mapper():
     return size
 
 def generateLogs(fileSize, start_time, end_time):
+    # Generate logs containing process information such as PID, file size, runtime, memory usage, and CPU utilization.
+
     running_time = end_time - start_time
     PID = os.getpid()
     process = psutil.Process(PID)
@@ -54,10 +56,20 @@ def generateLogs(fileSize, start_time, end_time):
     logging.info(f"{PID}, {fileSize /1024 /1024: .4f}, {running_time:.2f}, {memory_usage / 1024 / 1024:.2f}, {cpu_utilization:.2f}")
 
 
-if __name__ == '__main__':    
-    logging.basicConfig(filename='mapper1.csv', format='%(asctime)s %(message)s',level=logging.INFO)
+if __name__ == '__main__':
+    # Configure logging
+    logging.basicConfig(filename='mapper1.csv', format='%(asctime)s %(message)s', level=logging.INFO)
+    # Uncomment the line below if you want to include a header in the log file
     # logging.info('Timestamp, PID, File read size(MB), Runtime(seconds), Memory Usage(MB), CPU utilization (%)')
+
+    # Start the timer
     start_time = time.time()
+
+    # Execute the mapper function and get the file size
     fileSize = mapper()
+
+    # Stop the timer
     end_time = time.time()
-    generateLogs(fileSize,start_time,end_time)
+
+    # Generate the logs
+    generateLogs(fileSize, start_time, end_time)
