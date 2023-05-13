@@ -1,6 +1,6 @@
 # Map-Reduce-K-Most-Popular-words
 ## COEN 242 Big Data - Programming Assignment 2
-## Student name(s) - Divya Mahajan, Rushang Shah
+### Student name(s) - Divya Mahajan, Rushang Shah
 
 ---
 
